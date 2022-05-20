@@ -1,0 +1,20 @@
+{
+  "name": "shrink-url",
+  "version": "1.0.0",
+  "description": "Shrink Url Project for Portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <title>Shrink Url</title>
+  <script>
+    const copyUrl = (url) => {
+      const el = document.createElement('textarea');
+      el.value = url;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+    }
+  </script>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <h1>Total Shortener Urls: <%= total %>  </h1>
+        <h1>Shrink Your Url</h1>
+        <p>Url will be deleted automatically after short period</p>
+        <form action="/shortenUrl" method="post">
+          <div class="input-group mb-3">
+            <input type="url" class="form-control" name="originalUrl" placeholder="Your Url" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+       <div class="row justify-content-center">
+        <div class="col-md-10">
+          <table class="table table-striped table-responsive">
+            <thead>
+              <tr>
+                <th>Original Url</th>
+                <th>Short Url</th>
+                <th>Clicks</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+               <% urls.forEach(url =>{%>
+              <tr>
+                <td><%= url.originalUrl %></td>
+                <td><%= host+url.shortUrl %></td>
+                <td><%= url.clicks %></td>
+                <td><button class="btn btn-primary" onclick="copyUrl('<%= host+url.shortUrl %>')">Copy</button></td>
+               <% }) %> 
+            </tbody>
+          </table>
+        </div>
+       </div>
+      </div>
+</body>
+</html>
