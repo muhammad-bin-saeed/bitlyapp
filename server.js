@@ -48,11 +48,13 @@ app.post("/shortenUrl", async (req, res) => {
 app.get("/:shortUrl", async (req, res) => {
   const url = await UrlShorten.findOne({ shortUrl: req.params.shortUrl });
   if (!url) {
-    res.send("URL not found");
-  }
-  url.clicks++;
+    url.clicks++;
   url.save();
   res.redirect(url.originalUrl);
+  } else {
+    res.send("URL not found");
+  }
+  
 });
 
 
