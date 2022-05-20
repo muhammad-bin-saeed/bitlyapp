@@ -47,7 +47,7 @@ app.post("/shortenUrl", async (req, res) => {
 
 app.get("/:shortUrl", async (req, res) => {
   const url = await UrlShorten.findOne({ shortUrl: req.params.shortUrl });
-  if (!url) {
+  if (url) {
     url.clicks++;
   url.save();
   res.redirect(url.originalUrl);
