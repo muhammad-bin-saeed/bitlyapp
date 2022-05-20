@@ -6,7 +6,7 @@ const TotalUrls = require("./models/total");
 const app = express();
 const port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://urlShort:xjWov3uTvjOpDzEq@cluster0-shard-00-00.nmn34.mongodb.net:27017,cluster0-shard-00-01.nmn34.mongodb.net:27017,cluster0-shard-00-02.nmn34.mongodb.net:27017/url-shortener?ssl=true&replicaSet=atlas-zpsfn8-shard-0&authSource=admin&retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
